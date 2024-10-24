@@ -8,7 +8,7 @@ shadcn/colors is a Visual Studio Code extension displays real-time previews of c
 
 Disclaimer: This extension is not directly affiliated with or endorsed by the creator of shadcn. It is an independent solution designed to address specific issues and is not associated with shadcn in any way.
 
-<img src="./images/color-preview.webp" width="400" alt="shadcn-colors Preview" />
+<img src="./images/preview.webp" width="400" alt="shadcn-colors Preview" />
 
 **Change Colors for HSL values**
 
