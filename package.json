@@ -1,0 +1,72 @@
+{
+  "name": "shadcn-colors",
+  "displayName": "shadcn/colors",
+  "description": "shadcn/colors is a Visual Studio Code extension displays real-time previews of colors for themes in https://ui.shadcn.com",
+  "version": "0.2.2",
+  "engines": {
+    "vscode": "^1.94.0"
+  },
+  "icon": "images/icon.png",
+  "publisher": "zainzafar90",
+  "galleryBanner": {
+    "color": "#000",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zainzafar90/shadcn-colors"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "shadcn-colors.enableColors",
+        "title": "shadcn/colors: Enable (beta)"
+      },
+      {
+        "command": "shadcn-colors.disableColors",
+        "title": "shadcn/colors: Disable (beta)"
+      },
+      {
+        "command": "shadcn-colors.changeColor",
+        "title": "shadcn/colors: Change HSL Color (beta)"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "vscode:publish": "vsce publish",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/color-convert": "^2.0.4",
+    "@types/mocha": "^10.0.9",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.94.0",
+    "@typescript-eslint/eslint-plugin": "^8.10.0",
+    "@typescript-eslint/parser": "^8.7.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.13.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.6.3",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447",
+  "dependencies": {
+    "color-convert": "^2.0.1",
+    "validate-color": "^2.2.4"
+  }
+}
