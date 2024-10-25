@@ -2,9 +2,9 @@
   "name": "shadcn-colors",
   "displayName": "shadcn/colors",
   "description": "shadcn/colors is a Visual Studio Code extension displays real-time previews of colors for themes in https://ui.shadcn.com",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "engines": {
-    "vscode": "^1.94.0"
+    "vscode": "^1.73.0"
   },
   "icon": "images/icon.png",
   "publisher": "zainzafar90",
