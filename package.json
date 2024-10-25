@@ -17,7 +17,20 @@
     "url": "https://github.com/zainzafar90/shadcn-colors"
   },
   "categories": [
-    "Other"
+    "Themes",
+    "Visualization",
+    "Programming Languages"
+  ],
+  "keywords": [
+    "colors",
+    "themes",
+    "ui",
+    "shadcn",
+    "css",
+    "scss",
+    "less",
+    "sass",
+    "nextjs"
   ],
   "activationEvents": [],
   "main": "./dist/extension.js",
