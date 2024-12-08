@@ -17,7 +17,6 @@ class ShadcnColors {
   private readonly decorationType: vscode.TextEditorDecorationType;
   private activeEditor: vscode.TextEditor | undefined;
   private debounceTimeout: NodeJS.Timeout | undefined;
-  private isEnabled: boolean = true;
 
   constructor(private readonly context: vscode.ExtensionContext) {
     this.decorationType = this.createDecorationType();
@@ -51,23 +50,9 @@ class ShadcnColors {
         }
       }),
 
-      vscode.workspace.onDidChangeTextDocument((event) => {
-        if (
-          this.activeEditor &&
-          event.document === this.activeEditor.document
-        ) {
-          this.triggerUpdate();
-        }
-      }),
-
       vscode.commands.registerCommand(
-        "shadcn-colors.enableColors",
-        this.enableColorDecorations.bind(this)
-      ),
-
-      vscode.commands.registerCommand(
-        "shadcn-colors.disableColors",
-        this.disableColorDecorations.bind(this)
+        "shadcn-colors.toggleColors",
+        this.toggleColorDecorations.bind(this)
       ),
 
       vscode.commands.registerCommand(
@@ -113,6 +98,11 @@ class ShadcnColors {
   private createDecorationOptions(
     matches: ColorMatch[]
   ): vscode.DecorationOptions[] {
+    const isEnabled = this.context.globalState.get(
+      "shadcnColorsEnabled",
+      false
+    );
+
     return matches.map((match) => {
       const hexColor = `#${colorConvert.hsl.hex([
         match.hue,
@@ -120,7 +110,7 @@ class ShadcnColors {
         match.lightness,
       ])}`;
 
-      if (!this.isEnabled) {
+      if (!isEnabled) {
         return {
           range: match.range,
         };
@@ -156,15 +146,15 @@ class ShadcnColors {
     this.activeEditor.setDecorations(this.decorationType, decorations);
   }
 
-  private enableColorDecorations(): void {
-    this.isEnabled = true;
-    vscode.window.showInformationMessage("shadcn/colors Enabled");
-    this.updateDecorations();
-  }
-
-  private disableColorDecorations(): void {
-    this.isEnabled = false;
-    vscode.window.showInformationMessage("shadcn/colors Disabled");
+  private toggleColorDecorations(): void {
+    const isEnabled = this.context.globalState.get(
+      "shadcnColorsEnabled",
+      false
+    );
+    this.context.globalState.update("shadcnColorsEnabled", !isEnabled);
+    vscode.window.showInformationMessage(
+      `shadcn/colors ${isEnabled ? "Disabled" : "Enabled"}`
+    );
     this.updateDecorations();
   }
 
@@ -246,6 +236,7 @@ class ShadcnColors {
 export function activate(context: vscode.ExtensionContext): void {
   const decorator = new ShadcnColors(context);
   context.subscriptions.push(decorator);
+  context.globalState.update("shadcnColorsEnabled", true);
 }
 
 export function deactivate(): void {}

@@ -1,9 +1,18 @@
 # Change Log
 
-All notable changes to the "shadcn-colors" extension will be documented in this file.
+## [1.0.0] - 2024-12-08
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+### Added
+- Color previews now enabled by default on extension activation
+- New simplified toggle command to show/hide color previews
 
-## [Unreleased]
+### Removed
+- Beta tag
+- Separate enable and disable commands
 
-- Initial release
+## [0.3.0] - 2024-10-24
+
+### Initial Release
+- HSL color preview functionality
+- Color picker for changing HSL values
+- Basic enable/disable commands

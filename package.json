@@ -2,7 +2,7 @@
   "name": "shadcn-colors",
   "displayName": "shadcn/colors",
   "description": "shadcn/colors is a Visual Studio Code extension displays real-time previews of colors for themes in https://ui.shadcn.com",
-  "version": "0.3.1",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.73.0"
   },
@@ -32,17 +32,12 @@
     "sass",
     "nextjs"
   ],
-  "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "shadcn-colors.enableColors",
-        "title": "shadcn/colors: Enable (beta)"
-      },
-      {
-        "command": "shadcn-colors.disableColors",
-        "title": "shadcn/colors: Disable (beta)"
+        "command": "shadcn-colors.toggleColors",
+        "title": "shadcn/colors: Toggle"
       },
       {
         "command": "shadcn-colors.changeColor",
@@ -50,6 +45,9 @@
       }
     ]
   },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "scripts": {
     "vscode:prepublish": "npm run package",
     "vscode:publish": "vsce publish",
